@@ -1,0 +1,55 @@
+{
+    "categories": [
+        {
+            "id": 1,
+            "name": "Pizza",
+            "img": "https://images.unsplash.com/photo-1628840042765-356cda07504e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MTh8fHxlbnwwfHx8fA%3D%3D&w=1000&q=80",
+            "items": [
+                {
+                    "id": 1,
+                    "name": "Margherita",
+                    "cena": 139,
+                    "img": "https://imgur.com/DfAfC2J.png"
+                },
+                {
+                    "id": 2,
+                    "name": "Salami",
+                    "cena": 149,
+                    "img": "https://imgur.com/DfAfC2J.png"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "name": "Burgery",
+            "img": "https://www.apetitonline.cz/sites/default/files/styles/small/public/recepty/amirali-mirhashemian-sc5sTPMrVfk-unsplash.jpg?h=37404b29",
+            "items": [
+                {
+                    "id": 1,
+                    "name": "El Capone",
+                    "cena": 159,
+                    "img": "https://imgur.com/EGBaniC.png"
+                },
+                {
+                    "id": 2,
+                    "name": "The Grill Thrill",
+                    "cena": 159,
+                    "img": "https://imgur.com/EGBaniC.png"
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "name": "Přílohy",
+            "img": "https://imgur.com/oIMrzal.png",
+            "items": [
+                {
+                    "id": 1,
+                    "name": "Hranolky",
+                    "cena": 49,
+                    "img": "https://imgur.com/S8azcf2.png"
+                }
+            ]
+        }
+    ]
+}

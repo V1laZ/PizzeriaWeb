@@ -1,30 +1,52 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <div class="container fix-nav">
+    <Navbar :items_num="cartCounter" />
+    <router-view @incCounter="incCartCounter" @decCounter="decCartCounter" />
+  </div>
 </template>
 
+<script>
+import Navbar from './components/Navbar.vue';
+
+export default {
+  name: 'App',
+  components: {
+    Navbar
+},
+methods: {
+  incCartCounter() {
+    this.cartCounter += 1
+  },
+  decCartCounter() {
+    this.cartCounter -= 1
+  },
+  getItemsNum() {
+    let num = 0;
+    const objednavka = JSON.parse(localStorage.getItem('objednavka'))
+    if (objednavka) {
+        for (let i = 0; i < objednavka.length; i++) {
+            num += objednavka[i].quantity;
+        }
+    }
+    return num
+  },
+},
+data() {
+  return {
+    cartCounter: 0
+  }
+},
+created() {
+  this.cartCounter = this.getItemsNum()
+}
+
+}
+</script>
+  
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+  .fix-nav {
+    margin-top: 3rem;
+  }
 
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
-}
 </style>
+  

@@ -1,8 +1,14 @@
-# osicko2
+# Pizzeria
+Fun little project I've done to learn Vue.
 
 ## Project setup
 ```
 npm install
+```
+
+## Run backend
+```
+npm run backend
 ```
 
 ### Compiles and hot-reloads for development

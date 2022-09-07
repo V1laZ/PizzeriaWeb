@@ -1,18 +1,34 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <Menu :menuCategories="menuCategories" />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
+import Menu from '@/components/Menu.vue'
 export default {
   name: 'HomeView',
   components: {
-    HelloWorld
+    Menu
+},
+  data() {
+    return {
+      menuCategories: []
+    }
+  },
+  methods: {
+  async fetchMenuCategories() {
+    const res = await fetch('api/categories')
+
+    const data = await res.json()
+
+    return data
   }
+},
+
+async created() {
+  this.menuCategories = await this.fetchMenuCategories()
+}
+
 }
 </script>

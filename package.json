@@ -1,13 +1,20 @@
 {
-  "name": "osicko2",
+  "name": "Pizzeria",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build",
+    "backend": "json-server --watch db.json --port 5000"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.2.0",
+    "@fortawesome/free-solid-svg-icons": "^6.2.0",
+    "@fortawesome/vue-fontawesome": "^3.0.1",
+    "@popperjs/core": "^2.11.6",
+    "bootstrap": "^5.2.0",
     "core-js": "^3.8.3",
+    "json-server": "^0.17.0",
     "vue": "^3.2.13",
     "vue-router": "^4.0.3"
   },
