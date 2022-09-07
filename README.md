@@ -6,7 +6,7 @@ Fun little project I've done to learn Vue.
 npm install
 ```
 
-## Run backend
+### Run backend
 ```
 npm run backend
 ```
