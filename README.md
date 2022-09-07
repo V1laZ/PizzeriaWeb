@@ -1,4 +1,4 @@
-# Pizzeria
+# PizzeriaWeb
 Fun little project I've done to learn Vue.
 
 ## Project setup
