@@ -1,5 +1,6 @@
 # PizzeriaWeb
 Fun little project I've done to learn Vue.  
+
 Demo version without backend hosted [here](https://v1laz.github.io/PizzeriaWeb/#/)
 
 ## Project setup
