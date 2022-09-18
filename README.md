@@ -1,4 +1,4 @@
-# Pizzeria
+# PizzeriaWeb
 Fun little project I've done to learn Vue.  
 Demo version without backend hosted [here](https://v1laz.github.io/PizzeriaWeb/#/)
 
@@ -7,7 +7,7 @@ Demo version without backend hosted [here](https://v1laz.github.io/PizzeriaWeb/#
 npm install
 ```
 
-## Run backend
+### Run backend
 ```
 npm run backend
 ```
