@@ -4,17 +4,17 @@
         <div class="row mb-3 row-bg">
             <div class="col align-self-center col-lg-2" >
                 <div>
-                    <img class="item-thumbnail align-self-center mt-1 mb-1" :src=this.img >
+                    <img class="item-thumbnail align-self-center mt-1 mb-1" :src=item.img >
                 </div>
             </div>
             <div class="col col-xl-5 col-lg-4 mt-3">
                 <h3 class="title text-light text-start pb-4 font-weight-bold" >
-                    {{ name }}
+                    {{ item.name }}
                 </h3>
                 <p class="text-secondary">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta culpa laboriosam, fugit nihil porro ab quas sint assumenda quasi aspernatur!</p>
             </div>
             <div class="col-2 col-lg-3 col-md-3 col-xl-2 align-self-center">
-                <h1>{{ cena }} Kč</h1>
+                <h1>{{ item.cena }} Kč</h1>
             </div>
             <div class="col-lg-3 col-xl-3 order-last align-self-center">
                 <AddButton @btn-click="incQuantity" />
@@ -29,12 +29,12 @@
     <div class="d-md-none m-1 mb-3">
         <div class="col align-self-center col-lg-2">
             <div>
-                <img class="item-thumbnail align-self-center mt-1 mb-1" :src=this.img >
+                <img class="item-thumbnail align-self-center mt-1 mb-1" :src=item.img >
             </div>
         </div>
         <div class="col col-lg-6 mt-3">
             <h3 class="title text-light text-start pb-4 font-weight-bold" >
-                {{ name }}
+                {{ item.name }}
             </h3>
             <p class="text-secondary">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta culpa laboriosam, fugit nihil porro ab quas sint assumenda quasi aspernatur!</p>
         </div>
@@ -44,7 +44,7 @@
             <RemoveButton v-if="quantity > 0" @btn-click="decQuantity" />
             <p v-if="quantity > 0" class="quant">{{ quantity }}</p>
             <p class="quant" ></p> <!--fixes style issues-->
-            <h1>{{ cena }} Kč</h1>
+            <h1>{{ item.cena }} Kč</h1>
         </div>
     </div>
 </template>
@@ -56,9 +56,7 @@ export default {
     name: "MenuItemComponent",
     emits: ['incCounter', 'decCounter'],
     props: {
-        name: String,
-        img: String,
-        cena: Number
+        item: Object,
     },
     methods: {
         getQuantity() {
@@ -66,8 +64,13 @@ export default {
                 return 0
             }
             const objednavka = JSON.parse(localStorage.getItem('objednavka'))
+            // backport compatibility
+            if (!objednavka[0].priceID) {
+                localStorage.clear()
+                return
+            }
             for (let i = 0; i < objednavka.length; i++) {
-                if (objednavka[i].name === this.name) {
+                if (objednavka[i].name === this.item.name) {
                     return objednavka[i].quantity
                 }
             }
@@ -79,16 +82,17 @@ export default {
             if (localStorage.getItem('objednavka') === null) {
                 const objednavka = [ 
                     {
-                        'name': this.name,
+                        'name': this.item.name,
                         'quantity': 1,
-                        'cena': this.cena
+                        'cena': this.item.cena,
+                        'priceID': this.item.priceID
                     } ]
                 localStorage.setItem('objednavka', JSON.stringify(objednavka))
             }
             else {
                 const objednavka = JSON.parse(localStorage.getItem('objednavka'))
                 for (let i = 0; i < objednavka.length; i++) {
-                    if (objednavka[i].name === this.name) {
+                    if (objednavka[i].name === this.item.name) {
                         objednavka[i].quantity += 1
                         localStorage.setItem('objednavka', JSON.stringify(objednavka))
                         isIn = true;
@@ -98,9 +102,10 @@ export default {
                 if (!isIn) {
                     objednavka.push(
                         {
-                            'name': this.name,
+                            'name': this.item.name,
                             'quantity': 1,
-                            'cena': this.cena
+                            'cena': this.item.cena,
+                            'priceID': this.item.priceID
                         })
                     localStorage.setItem('objednavka', JSON.stringify(objednavka))
                 }
@@ -113,7 +118,7 @@ export default {
         decQuantity() {
             const objednavka = JSON.parse(localStorage.getItem('objednavka'))
                 for (let i = 0; i < objednavka.length; i++) {
-                    if (objednavka[i].name === this.name) {
+                    if (objednavka[i].name === this.item.name) {
                         objednavka[i].quantity -= 1
                         localStorage.setItem('objednavka', JSON.stringify(objednavka))
                         break

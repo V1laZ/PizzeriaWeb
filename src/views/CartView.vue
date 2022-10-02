@@ -14,6 +14,9 @@
             <p class="text-light">{{ getCelkem() }} Kč</p>
         </div>
     </div>
+    <div class="container col-lg-7 mt-4" v-if="kosik.length > 0" >
+        <router-link :to="{ name: 'Adresa' }" ><button type="button" class="btn btn-primary">Objednat</button></router-link>
+    </div>
 </template>
 
 <script>
@@ -49,7 +52,7 @@
 
 <style scoped>
 .box {
-    border: 5px solid rgba(255, 255, 255, 0.26);
+    border: 4px solid rgba(255, 255, 255, 0.26);
     border-radius: 1rem;
 }
 
@@ -66,6 +69,5 @@ hr {
     height: 3px;
     width: 97%;
 }
-
 
 </style>

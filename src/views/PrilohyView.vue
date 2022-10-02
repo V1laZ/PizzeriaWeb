@@ -1,6 +1,6 @@
 <template>
     <div :key="prilohy.id" v-for="priloha in prilohy" >
-        <MenuItem @incCounter="$emit('incCounter')" @decCounter="$emit('decCounter')" :name=priloha.name :img=priloha.img :cena=priloha.cena />
+        <MenuItem @incCounter="$emit('incCounter')" @decCounter="$emit('decCounter')" :item="priloha" />
     </div>
 </template>
 
@@ -12,19 +12,27 @@ export default {
     components: { MenuItem, MenuItem },
     data() {
         return {
-            prilohy: []
+            prilohy: [
+                {
+                    "id": 1,
+                    "name": "Hranolky",
+                    "cena": 49,
+                    "img": "https://imgur.com/S8azcf2.png",
+                    "priceID": "price_1LoRD7KfgtR7MYIzVJx0iT62"
+                }
+            ]
         };
     },
-    methods: {
-        async fetchAllPrilohy() {
-            const res = await fetch("api/categories/3");
-            const data = await res.json();
-            return data.items;
-        }
-    },
-    async created() {
-        this.prilohy = await this.fetchAllPrilohy();
-    },
+    // methods: {
+    //     async fetchAllPrilohy() {
+    //         const res = await fetch("api/categories/3");
+    //         const data = await res.json();
+    //         return data.items;
+    //     }
+    // },
+    // async created() {
+    //     this.prilohy = await this.fetchAllPrilohy();
+    // },
 }
 
 </script>

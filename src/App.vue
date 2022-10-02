@@ -1,7 +1,7 @@
 <template>
   <div class="container fix-nav">
     <Navbar :items_num="cartCounter" />
-    <router-view @incCounter="incCartCounter" @decCounter="decCartCounter" />
+    <router-view @success="clearCart" @incCounter="incCartCounter" @decCounter="decCartCounter" />
   </div>
 </template>
 
@@ -30,6 +30,9 @@ methods: {
     }
     return num
   },
+  clearCart() {
+    this.cartCounter = 0
+  }
 },
 data() {
   return {
