@@ -13,9 +13,6 @@
         props: {
             items_num: Number
         },
-        created() {
-            // console.log(items_num)
-        }
     }
 </script>
 
