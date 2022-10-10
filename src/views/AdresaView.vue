@@ -27,8 +27,7 @@
                     <input type="text" class="form-control" id="inputZip" placeholder="12345" >
                 </div>
             </div>
-            <!-- <router-link :to="{ name: 'Platba' }" ><button class="btn btn-primary mt-3">Zaplatit</button></router-link> -->
-            <button @click="redirect" class="btn btn-primary mt-3">Zaplatit {{ getCelkem() }} Kč</button>
+            <button type="button" @click="redirect" class="btn btn-primary mt-3">Zaplatit {{ getCelkem() }} Kč</button>
         </form>
     </div>
 </template>
@@ -38,7 +37,7 @@ export default {
     name: 'AdresaView',
     methods: {
         redirect() {
-            this.stripe.redirectToCheckout({
+           this.stripe.redirectToCheckout({
                 successUrl: "http://localhost:8080/?#/objednavka/success",
                 cancelUrl: "http://localhost:8080",
                 lineItems: this.getItems(),
